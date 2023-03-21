@@ -4,7 +4,7 @@ from pynput.mouse import Controller, Button
 from pynput.keyboard import Listener, KeyCode
 
 ### Pressing 'x' will enable and disable auto-clicker
-TOGGLE_KEY = KeyCode(char = "x")
+TOGGLE_KEY = KeyCode(char = "x") 
 
 clicking = False
 mouse = Controller()
@@ -13,7 +13,7 @@ def clicker():
     while True:
         if clicking:
             mouse.click(Button.left, 1)
-        time.sleep(0.0000001)
+        time.sleep(0.00001) # Change this value in order to determine frequency of the click
 
 
 def toggle_event(key):
