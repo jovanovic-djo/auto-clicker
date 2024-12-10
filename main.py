@@ -1,10 +1,14 @@
 import time
 import threading
+import random
 from pynput.mouse import Controller, Button
 from pynput.keyboard import Listener, KeyCode
 
 # Pressing '~' will enable and disable auto-clicker
 TOGGLE_KEY = KeyCode(char="~")
+
+# Define the range for the random delay (in seconds)
+DELAY_RANGE = (0.8, 2)
 
 clicking = False
 mouse = Controller()
@@ -13,7 +17,10 @@ def clicker():
     while True:
         if clicking:
             mouse.click(Button.left)
-        time.sleep(0.3)  # add delay betweexn clicks
+            # Add a random delay between clicks
+            time.sleep(random.uniform(*DELAY_RANGE))
+        else:
+            time.sleep(0.1)  # Short delay when not clicking to reduce CPU usage
 
 def toggle_event(key):
     global clicking
